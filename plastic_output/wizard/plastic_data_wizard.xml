@@ -1,0 +1,35 @@
+<odoo>
+    <record model="ir.ui.view" id="plastic_data_report_wizard">
+        <field name="name">Plastic DataReport</field>
+        <field name="model">plastic.data.report.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Plastic Data Report">
+                <group>
+                    <group>
+                        <field name="date_start"/>
+                    </group>
+                    <group>
+                        <field name="date_end"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="get_report" string="Get Report" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="action_plastic_data_report_wizard"
+                name="Plastic Data Report"
+                res_model="plastic.data.report.wizard"
+                view_mode="form"
+                target="new"
+                />
+
+    <menuitem action="action_plastic_data_report_wizard"
+              id="menu_plastic_data_report_wizard"
+              parent="plastic_reports"
+              groups="group_plastic_manager"/>
+</odoo>

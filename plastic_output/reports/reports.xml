@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="paperformat_plastic" model="report.paperformat">
+            <field name="name">Plastic Details</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">30</field>
+            
+        </record>
+        <report 
+            id="action_report_plastic_details"
+            string="Plastic Bottles Manufacturing Report"
+            model="plastic.data.report.wizard" 
+            report_type="qweb-pdf"
+            file="plastic_output.report_plastic_details" 
+            name="plastic_output.report_plastic_details"
+            paperformat="paperformat_plastic"
+        />
+    </data>
+</odoo>

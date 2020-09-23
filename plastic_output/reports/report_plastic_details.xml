@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_plastic_details">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="font">
+                        <div class="page">
+                            <br/>
+                            <div style="border-bottom: 2px solid black">
+                                <h3 class="text-center">
+                                    <strong>Plastic Bottles Report</strong>
+                                </h3>
+                                <h4 class="text-center">
+                                    <strong>From</strong>
+                                    <t t-esc="date_start" />
+                                    <strong>To</strong>
+                                    <t t-esc="date_end" />
+                                </h4>
+                            </div>
+                            <br/>
+                            <div class="article">
+                            <table class="table table-bordered table-condensed">
+                                <thead>
+                                    
+                                    <th class="text-left">Date</th>
+                                    <th class="text-left">Name</th>
+                                    <th class="text-left">Machine Name</th>
+                                    <th class="text-left">Mold Name</th>
+                                    <th class="text-left">Supervisor Name</th>
+                                    <th class="text-left">No of Cavity</th>
+                                    <th class="text-left">Pieces in Cartons</th>
+                                    <th class="text-left">Shot WT Grams</th>
+                                    <th class="text-left">Runner WT Grams</th>
+                                    <th class="text-left">Day Shots</th>
+                                    <th class="text-left">Night Shots</th>
+                                    <th class="text-left">Shots 24 HRS</th>
+                                    <th class="text-left">Total Input</th>
+                                    <th class="text-left">No of Cartons Produced</th>
+                                    <th class="text-left">Wastage</th>
+                                    <th class="text-left">Lumps</th>
+                                    <th class="text-left">Runner</th>
+                                    <th class="text-left">Product Average</th>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="docs" t-as="doc">
+                                        <tr>
+                                            <td class="text-center">
+                                                <span t-esc="doc['date']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc['name']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc['machine']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc['mold']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="doc['supervisor']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc['cavity']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="doc['pcs_in_ctns']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc['shot_wt_grams']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc['runner_wt_grams']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc['day_shots']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc['night_shots']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc['total_shots']"/>
+                                            </td>
+
+                                            <td class="text-center">
+                                                <span t-esc="doc['total_input']"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="doc['output_bottles']"/>
+                                            </td>
+
+                                            <td class="text-right">
+                                                <span t-esc="doc['wastage']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc['lumps']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="doc['runner']"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="doc['average']"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                        <tr>
+                                            <td class="text-center" colspan="12">
+                                                <b>TOTALS: </b>
+                                            </td>
+                                            <td class="text-right">
+                                                <t t-esc="sum([o['total_input'] for o in docs])" />
+                                            </td>
+                                            <td class="text-right">
+                                                <t t-esc="sum([o['output_bottles'] for o in docs])" />
+                                            </td>
+                                            <td class="text-right">
+                                                <t t-esc="sum([o['wastage'] for o in docs])" />
+                                            </td>
+                                            <td class="text-right">
+                                                <t t-esc="sum([o['lumps'] for o in docs])" />
+                                            </td>
+                                            <td class="text-right">
+                                                <t t-esc="sum([o['runner'] for o in docs])" />
+                                            </td>
+
+                                        </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

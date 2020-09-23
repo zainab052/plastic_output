@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+    	<menuitem
+            id="plastic_menu_root"
+            name="Plastics"
+            sequence="6"/>
+
+        <menuitem id="plastic_configuration"
+            name="Configurations"
+            parent="plastic_menu_root"
+            sequence="4"/>
+
+        <menuitem id="plastic_reports"
+            name="Reports"
+            parent="plastic_menu_root"
+            sequence="3"/>
+
+        <menuitem id="plastic_data"
+            name="Machine Data"
+            parent="plastic_menu_root"
+            action="plastic_data_action"
+            sequence="1"/>
+
+        <menuitem id="plastic_machine_menu"
+            name="Machines"
+            parent="plastic_configuration"
+            action="plastic_machine_action"
+            sequence="1"/>
+
+        <menuitem id="plastic_mold_menu"
+            name="Molds"
+            parent="plastic_configuration"
+            action="plastic_mold_action"
+            sequence="2"/>
+	</data>
+</odoo>

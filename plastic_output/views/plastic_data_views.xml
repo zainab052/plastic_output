@@ -1,0 +1,120 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="plastic_data_list">
+            <field name="name">plastic machine list</field>
+            <field name="model">plastic.data</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date" />
+                    <field name="machine_id" />
+                    <field name="supervisor_id" />
+                    <field name="total_input" />
+                    <field name="total_output_bottles" />
+                    <field name="wastage" />
+                    <field name="lumps" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="plastic_data_action">
+            <field name="name">plastic data</field>
+            <field name="res_model">plastic.data</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record model="ir.ui.view" id="plastic_data_form">
+            <field name="name">plastic data form</field>
+            <field name="model">plastic.data</field>
+            <field name="arch" type="xml">
+                <form string="Plastic Machine Output">
+                    <sheet>
+                        <group>
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="name" placeholder="Name"/>
+                                </h1>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="supervisor_id" />
+                            <field name="machine_id" />
+                            <field name="mold" />
+                            <field name="date" />
+                        </group>
+                        <group>
+                            <group string="Day" name="day" >
+                                <field name="day_time_start" widget="float_time"/>
+                                <field name="day_time_end" widget="float_time" />
+                                <field name="total_day_time" widget="float_time"/>
+                                <field name="day_shots" />
+                            </group>
+                            <group string="Night" name="night">
+                                <field name="night_time_start" widget="float_time" />
+                                <field name="night_time_end" widget="float_time" />
+                                <field name="total_night_time" widget="float_time"/>
+                                <field name="night_shots" />
+                            </group>
+                            <group string="Full Day" name="full_day">
+                                <field name="total_shots" />
+                                <field name="total_time" widget="float_time"/>
+                            </group>
+
+                        </group>
+
+                        <group string="Machine Values">
+                           <!-- <div class="o_row">
+                                <field name="unit_of_measure" help="coverts wastage and lumps to specified units of measure"/>
+                                <button name="action_convert" type="object" title="convert" icon="fa-exchange" />
+                            </div> -->
+                            <field name="total_input" />
+                            <div class="o_row">
+                                <group>
+                                    <field name="total_output_kg" />
+                                    <field name="total_output_bottles"/>
+                                </group>
+                            </div>
+                            <field name="wastage" />
+                            <field name="lumps" />
+                            <field name="runner" />
+
+                        </group>
+                        <group string="Averages">
+                            <field name="product_average" />
+                        </group>
+
+                    </sheet>    
+                </form>
+            </field>
+        </record>
+
+    <record id="plastic_data_search_view" model="ir.ui.view">
+        <field name="name">plastic.data.search</field>
+        <field name="model">plastic.data</field>
+        <field name="arch" type="xml">
+            <search string="Plastic Data">
+                <field name="name" />
+                <field name="date" />
+                <field name="machine_id" />
+                <field name="supervisor_id" />
+                <field name="total_input" />
+                <field name="total_output_bottles" />
+                <field name="wastage" />
+                <field name="lumps" />
+              
+              <group expand="1" string="Group By">
+                    <filter string="Name" name="name" context="{'group_by':'name'}"/>
+                    <filter string="Date" name="date" context="{'group_by':'date'}" />
+                    <filter string="Machine" name="machine_id" context="{'group_by':'machine_id'}" />
+                    <filter string="Supervisor" name="supervisor_id" context="{'group_by':'supervisor_id'}" />
+                    <filter string="Total Input" name="total_input" context="{'group_by':'total_input'}" />
+                    <filter string="Output" name="total_output_bottles" context="{'group_by':'total_output_bottles'}" />
+                    <filter string="wastage" name="wastage" context="{'group_by':'wastage'}" />
+                    <filter string="Lumps" name="lumps" context="{'group_by':'lumps'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+    </data>
+</odoo>

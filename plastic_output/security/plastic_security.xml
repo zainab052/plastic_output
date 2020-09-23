@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+<data>
+    <record id="module_category_plastic_output" model="ir.module.category">
+        <field name="name">Plastic</field>
+        <field name="description">Helps you manage who can access the Plastic Module.</field>
+        <field name="sequence">10</field>
+    </record>
+	<record id="group_plastic_user" model="res.groups">
+        <field name="name">Officer</field>
+        <field name="category_id" ref="module_category_plastic_output" />
+        <field name="implied_ids" eval="[(6, 0, [ref('base.group_private_addresses'), ref('base.group_user')])]"/>
+        <field name="comment">The user will be able to create machine data.</field>
+    </record>
+
+    <record id="group_plastic_manager" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="module_category_plastic_output" />
+        <field name="comment">The user will have access to the configurations as well as reports.</field>
+        <field name="implied_ids" eval="[(4, ref('group_plastic_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+</data>
+</odoo>

@@ -1,0 +1,124 @@
+<odoo>
+    <data>
+        <!-- Mold Model -->
+                <record model="ir.ui.view" id="plastic_mold_list">
+            <field name="name">plastic.mold.list</field>
+            <field name="model">plastic.mold</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="no_of_cavity" />
+                    <field name="pcs_in_ctns" />
+                    <field name="shot_wt_in_grams" />
+                    <field name="runner_wt_grams" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="plastic_mold_action">
+            <field name="name">Plastic Mold</field>
+            <field name="res_model">plastic.mold</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record model="ir.ui.view" id="plastic_mold_form">
+            <field name="name">plastic.mold.form</field>
+            <field name="model">plastic.mold</field>
+            <field name="arch" type="xml">
+                <form string="Plastic Molds">
+                    <sheet>
+                        <group>
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="name" placeholder="name"/>
+                                </h1>
+                            </div>
+                            <br />
+                        </group>
+                            <group name="values" string="Values">
+                                <field name="no_of_cavity" />
+                                <field name="pcs_in_ctns" />
+                                <field name="shot_wt_in_grams" />
+                                <field name="runner_wt_grams" />
+                            </group>
+                            <group name="description" string="Description">
+                                <field name="description" placeholder="Enter Description of Mold"/>
+                            </group>
+                    </sheet>    
+                </form>
+            </field>
+        </record>
+
+    <record id="plastic_mold_search_view" model="ir.ui.view">
+        <field name="name">plastic.mold.search</field>
+        <field name="model">plastic.mold</field>
+        <field name="arch" type="xml">
+            <search string="Plastic Molds">
+              <field name="name" />
+
+                <group expand="1" string="Group By">
+                    <filter string="Name" name="name" context="{'group_by':'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+        <!-- Machine Model -->
+        <record model="ir.ui.view" id="plastic_machine_list">
+            <field name="name">plastic machine list</field>
+            <field name="model">plastic.machine</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="mold_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="plastic_machine_action">
+            <field name="name">plastic machine</field>
+            <field name="res_model">plastic.machine</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record model="ir.ui.view" id="plastic_machine_form">
+            <field name="name">plastic machine form</field>
+            <field name="model">plastic.machine</field>
+            <field name="arch" type="xml">
+                <form string="Plastic Machines">
+                    <sheet>
+                        <group>
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="name" placeholder="name"/>
+                                </h1>
+                            </div>
+                            <br />
+                            <group>
+                                <field name="mold_id" />
+                            </group>
+                        </group>
+                    </sheet>    
+                </form>
+            </field>
+        </record>
+
+    <record id="plastic_machine_search_view" model="ir.ui.view">
+        <field name="name">plastic.machine.search</field>
+        <field name="model">plastic.machine</field>
+        <field name="arch" type="xml">
+            <search string="Plastic Machines">
+              <field name="name" />
+              <field name="mold_id" />
+              
+              <group expand="1" string="Group By">
+                    <filter string="Name" name="name" context="{'group_by':'name'}"/>
+                    <filter string="Mold" name="mold_id" context="{'group_by':'mold_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    </data>
+</odoo>

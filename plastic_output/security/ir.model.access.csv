@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_plastic_machine_manager,access_plastic_machine_manager,model_plastic_machine,group_plastic_manager,1,1,1,1
+access_plastic_machine_user,access_plastic_machine_user,model_plastic_machine,group_plastic_user,1,0,0,0
+access_plastic_data_manager,access_plastic_data_manager,model_plastic_data,group_plastic_manager,1,1,1,1
+access_plastic_data_user,access_plastic_data_user,model_plastic_data,group_plastic_user,1,1,1,0
+access_plastic_mold_manager,access_plastic_mold_manager,model_plastic_mold,group_plastic_manager,1,1,1,1
+access_plastic_mold_user,access_plastic_mold_user,model_plastic_mold,group_plastic_user,1,0,0,0
